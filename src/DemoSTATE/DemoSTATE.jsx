@@ -14,7 +14,7 @@ export default class DemoSTATE extends Component {
     // chuyển gía trị cần đổi vào state (thuọc tính co săn rcc)
 
     state = {
-       isLogin: false
+        isLogin: false
     }
     // phương hức kiểm tra đang nhập
 
@@ -23,7 +23,7 @@ export default class DemoSTATE extends Component {
         if (this.isLogin) {
             return <p className='text-white'>nguyễn thị khách hàng</p>
         }
-        return <button onClick={()=>{
+        return <button onClick={() => {
             // alert("hello")
             // click đổi islogin =>> true => Ui sẽ loanding lại và hiển thị tên clicent
             this.isLogin = true;
@@ -34,8 +34,20 @@ export default class DemoSTATE extends Component {
 
 
             // xét lại giá trị mới cho state và redern lại uigit
+
+            //? nếu chứa nhiều tham sô
+            // let newstay ={
+            //    isLogin:true
+            // }
+            // this.setState(newstay,() = >{
+            //     console.log(this.state.isLogon)
+            // });
+            // nếu dặt clg dưới setate  sẻ bị sai kết quả thông báo do bất đòng bộ dữ liệu
+
+
+
             this.setState({
-                isLogin:true
+                isLogin: true
             });
 
         }} className='btn btn-info'>login</button>
@@ -48,7 +60,7 @@ export default class DemoSTATE extends Component {
                     <span className="navbar-brand mb-0 h1">Navbar</span>
                     <div>
                         {/* hiển thị button login hoặc username */}
-                    {this.checkLogin()}
+                        {this.checkLogin()}
                     </div>
                 </nav>
             </div>
