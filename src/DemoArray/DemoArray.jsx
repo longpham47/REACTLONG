@@ -67,7 +67,7 @@ export default class DemoArray extends Component {
                     </thead>
                     <tbody>
                         {/* {this.renderCar()} */}
-                    {this.renderCarMap()}
+                        {this.renderCarMap()}
                     </tbody>
                 </table>
 
