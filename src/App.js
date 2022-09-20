@@ -13,6 +13,7 @@ import DemoArray from './DemoArray/DemoArray';
 import DemoProps from './DemoProps/DemoProps';
 import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
 import BaiTapXemChiTiec from './BaiTapXemChiTiec/BaiTapXemChiTiec';
+import BTGioHang from './BaiTapGioHang/BTGioHang';
 // app là component chính của ứng dụng chưa các component con
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
     {/* <DemoProps/> */}
     {/* <ShoesShop/> */}
 
-    <BaiTapXemChiTiec/>
+    {/* <BaiTapXemChiTiec/> */}
+    <BTGioHang/>
 
     {/* <DemoStyling/>
     <p className='demoCSS'>123456app</p>

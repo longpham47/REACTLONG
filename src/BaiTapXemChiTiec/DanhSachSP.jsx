@@ -6,7 +6,7 @@ export default class DanhSachSP extends Component {
   renderPhoenList = () => {
     return this.props.phonelist.map((phone) => {
         return <div className="col-4" key={`phone-${phone.maSP}`}>
-          <SanPham phone={phone}/>
+          <SanPham phone={phone} showDetail={this.props.showDetail}/>
         </div>
 
     })

@@ -31,8 +31,8 @@ export default class Btxemchitiet extends Component {
         let { chiTiecPhone } = this.state;
         return (
             <div className='container'>
-               <DanhSachSP phonelist={this.phonelist}/>
-               <BangCT chiTiecPhone={chiTiecPhone}/>
+               <DanhSachSP phonelist={this.phonelist} showDetail={this.showDetail}/>
+               <BangCT chiTiecPhone={chiTiecPhone} />
             </div>
         )
     }
