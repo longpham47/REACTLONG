@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import SanPham from '../BaiTapXemChiTiec/SanPham'
+import DanhSachSP2 from './DanhSachSP2'
+import GioHang from './GioHang'
 
 export default class BTGioHang extends Component {
 
@@ -16,60 +19,10 @@ export default class BTGioHang extends Component {
 
 
 
-    renderCart = () => {
-        return this.state.gioHang.map((spGh) => {
-            return <tr key={`cart-${spGh.maSP}`}>
-
-                <td>{spGh.maSP}</td>
-                <td>
-                    <img style={{ width: "50px" }} src={spGh.hinhAnh} alt="" />
-                </td>
-                <td>{spGh.tenSP}</td>
-                <td>
-                    <button onClick={()=>{
-                        this.changeSL(spGh.maSP,1)
-                    }} className='btn btn-info'>+</button>
-                    <span>{spGh.soLuong}</span>
-                    <button  onClick={()=>{
-                        this.changeSL(spGh.maSP,-1)
-                    }}  className='btn btn-danger'>-</button>
-                </td>
-                <td>
-                    {spGh.giaBan.toLocaleString()}Vnd
-                </td>
-                <td>
-                    {(spGh.soLuong * spGh.giaBan).toLocaleString()}Vnd
-                </td>
-                <td>
-                    <button onClick={() => {
-                        this.removeCart(spGh.maSP);
-                    }} className='btn btn-success'>xoá</button>
-                </td>
-            </tr>
-        })
-    }
+  
 
 
-
-    renderProductList = () => {
-        return this.phonelist.map((phone) => {
-            return <div className="col-4" key={phone.maSP}>
-                <div className="card">
-                    <img className="card-img-top" src={phone.hinhAnh} alt="" />
-                    <div className="card-body">
-                        <h4 className="card-title">{phone.tenSP}</h4>
-                        <p className="card-text">{phone.giaBan}</p>
-                        <p className='card-text'>{phone.manHinh}</p>
-                        <button onClick={() => {
-                            this.addToCard(phone)
-                        }} data-toggle="modal" data-target="#modelId" className="btn btn-danger">Thêm Giỏ hàng</button>
-                    </div>
-                </div>
-            </div>
-
-        })
-    }
-
+  
 
 
     //input : thoonf tin san r phaamr ddang duwocj click
@@ -143,7 +96,7 @@ export default class BTGioHang extends Component {
 
 
 
-
+    // thay đổi sô luọng (+-)
     changeSL = (maSP,sl) =>{
         let GioHangCapNhat = [...this.state.gioHang]
         let spFind = GioHangCapNhat.find((spGH) => { 
@@ -168,69 +121,56 @@ export default class BTGioHang extends Component {
 
 
 
-    render() {
-        return (
-            <div className='container'>
+    //! thay đổi tổng số luọng trên giỏ hàng .reduce((KẾT QUẢ ,TỪNG PHẦN TỬ, VỊ TRÍ)=>{},giá trị khoi toạ kết quả):
 
-                <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                    <a className="navbar-brand" href="#!">Navbar</a>
-                    <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse" id="collapsibleNavId">
-                        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="#!">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#!">Link</a>
-                            </li>
-
-                        </ul>
-                        <div className="form-inline my-2 my-lg-0">
-                            <p className="text-white">Giở Hàng (0)</p>
-                        </div>
-                    </div>
-                </nav>
-                <div className="row py-5">
-                    {this.renderProductList()}
-                </div>
-
-                <div className="modal fade" id="modelId" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-lg" >
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">mã</th>
-                                            <th scope="col">hình ảnh</th>
-                                            <th scope="col">tên sản phẩm</th>
-                                            <th scope="col">số luọng</th>
-                                            <th>đơn giá</th>
-                                            <th>thanh tiền</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.renderCart()}
-
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+    tinhTongSL = () => {
+        // reduce ((KẾT QUẢ ,TỪNG PHẦN TỬ, VỊ TRÍ)=>{},giá trị khoi toạ kết quả): duyệt mảng ,dựa vào công thưc tính toán 
+        // return một kết quả tính toán 
 
 
-            </div>
-        )
+        let tong = this.state.gioHang.reduce((tongSL,sanPham,index) => {
+            //công thức tính toán 
+            return tongSL += sanPham.soLuong;
+
+          }, 0);
+          return tong.toLocaleString();
+
     }
+
+
+
+
+
+
+        render() {
+            return (
+                <div className='container'>
+
+                    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+                        <a className="navbar-brand" href="#!">Navbar</a>
+                        <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon" />
+                        </button>
+                        <div className="collapse navbar-collapse" id="collapsibleNavId">
+                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li className="nav-item active">
+                                    <a className="nav-link" href="#!">Home</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#!">Link</a>
+                                </li>
+
+                            </ul>
+                            <div className="form-inline my-2 my-lg-0">
+                                <p className="text-white">Giở Hàng ({this.tinhTongSL()}) </p>
+                            </div>
+                        </div>
+                    </nav>
+                    <DanhSachSP2  addToCard={this.addToCard} phonelist={this.phonelist}/>
+
+                   <GioHang  removeCart={this.removeCart} changeSL={this.changeSL} gioHang={this.state.gioHang}/>
+
+                </div>
+            )
+        }
 }
