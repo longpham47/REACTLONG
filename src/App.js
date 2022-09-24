@@ -14,6 +14,8 @@ import DemoProps from './DemoProps/DemoProps';
 import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
 import BaiTapXemChiTiec from './BaiTapXemChiTiec/BaiTapXemChiTiec';
 import BTGioHang from './BaiTapGioHang/BTGioHang';
+import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
+
 // app là component chính của ứng dụng chưa các component con
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
     {/* <ShoesShop/> */}
 
     {/* <BaiTapXemChiTiec/> */}
-    <BTGioHang/>
+    {/* <BTGioHang/> */}
+    
+    <BTGioHangRedux/>
+
 
     {/* <DemoStyling/>
     <p className='demoCSS'>123456app</p>
