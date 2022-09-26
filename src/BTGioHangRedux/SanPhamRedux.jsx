@@ -22,7 +22,7 @@ class SanPhamRedux extends Component {
                         // (dispatch) : gui dữ loiệu từ component lên trên sôtrre
                         //để đảy dữ liệu lên store phải tạo action object
                         const action = {
-                            type: " THEM_GIO_HANG", // BẮT BUỘC PHẢI CÓ TYPE
+                            type: "THEM_GIO_HANG", // BẮT BUỘC PHẢI CÓ TYPE
                             sanPham: phone
                         }
                         this.props.dispatch(action)
