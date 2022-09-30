@@ -1,15 +1,40 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class KetQua extends Component {
+
+class KetQua extends Component {
   render() {
+    console.log(this.props);
+    let { banChon, tongBan, soBanThang } = this.props.game
     return (
-        <div className="result text-center py-5">
-                    <p>bạn chọn : <span className='text-danger'>tài</span></p>
-                    <p>số bàn thăng : <span className='text-success'>0</span></p>
-                    <p>tôngt số bàn chơi : <span className='text-danger'>0</span></p>
-                    <p>bạn chọn : <span className='btn btn-info'>play</span></p>
+      <div className="result text-center py-5">
+        <p>bạn chọn : <span className='text-danger'>{banChon ? "Tài" : "Xỉu"}</span></p>
+        <p>số bàn thăng : <span className='text-success'>{soBanThang}</span></p>
+        <p>tôngt số bàn chơi : <span className='text-danger'>{tongBan}</span></p>
 
-                </div>
+        <button className='btn btn-info' onClick={()=>{
+          let action = {
+            type:"LAC_XUC_XAC"
+          }
+          this.props.dispatch(action);
+        }}>play</button>
+
+      </div>
     )
   }
 }
+
+
+
+
+const mapStateToProps = (rootReducer) => {
+  return {
+    game: rootReducer.gameReduce
+  }
+
+}
+
+
+
+
+export default connect(mapStateToProps)(KetQua);
