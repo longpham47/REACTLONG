@@ -5,6 +5,7 @@
 import { combineReducers, createStore } from "redux";
 import { gioHangReduce } from "./reducer/gioHangReduc";
 import { gameReduce } from "./reducer/gameReduce";
+import { QLNDReducer } from "./reducer/QLNDreduce";
 
 //state ở rcc là đói tượng
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     
        
     gioHangReduce, //  gioHangReduce: gioHangReduce (objject literal)
-    gameReduce
+    gameReduce,
+    QLNDReducer
 
 })
 
