@@ -5,43 +5,31 @@ const initialState = {
     mangNguoiDung: [
         {
             taiKhoan: "user1", hoTen: "nguyên văn A", matKhau: "123456", sdt: "0123456789",
-            email: "test@gmail.com", maloaiND: "khachHang"
+            email: "test@gmail.com", maloaiND: "KHACHHANG"
         },
         {
             taiKhoan: "user2", hoTen: "nguyên văn B", matKhau: "123456", sdt: "0123456789",
-            email: "test@gmail.com", maloaiND: "khachHang"
+            email: "test@gmail.com", maloaiND: "KHACHHANG"
         },
     ],
-    nguoiDung : {
-        value: {
-            taiKhoan: "",
-            hoTen: "",
-            matKhau: "",
-            sdt: "",
-            email: "",
-            maloaiND: "khachHang"
-        },
-        error: {
-            taiKhoan: "",
-            hoTen: "",
-            matKhau: "",
-            sdt: "",
-            email: "",
-            maloaiND: "",
-        }
+   
+    nguoiDungChiTiet: {
+        taiKhoan: "user777",
+        hoTen: "nguyên văn C",
+        matKhau: "123456",
+        sdt: "0123456789",
+        email: "test@gmail.com",
+        maloaiND: "quanTri"
+
     }
     
 }
 
 export const QLNDReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "HANDLE_CHANGE" :
-            console.log(action.nguoiDung)
-            state.nguoiDung = action.nguoiDung;
+        
+        
 
-
-
-            return {...state}
 
         case "THEM_ND":
             console.log(action.nguoiDung)

@@ -17,6 +17,7 @@ import BTGioHang from './BaiTapGioHang/BTGioHang';
 import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
 import GameTaiXiu from './GameTaiXiu/GameTaiXiu';
 import BTQLND from './BTQLND/BTQLND';
+import BTQLNDRedux from './BTQLNDRedux/BTQLNDRedux';
 
 // app là component chính của ứng dụng chưa các component con
 function App() {
@@ -42,8 +43,8 @@ function App() {
     
     {/* <BTGioHangRedux/> */}
     {/* <GameTaiXiu/> */}
-    <BTQLND/>
-
+    {/* <BTQLND/> */}
+    <BTQLNDRedux/>
 
     {/* <DemoStyling/>
     <p className='demoCSS'>123456app</p>
